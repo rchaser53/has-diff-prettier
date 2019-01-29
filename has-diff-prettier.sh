@@ -1,6 +1,10 @@
 COUNT=`git diff`
 
-npm run prettier
+if [ -n "$FORMATTER_COMMAND" ]; then
+  $FORMATTER_COMMAND
+else
+  npm run prettier
+fi
 
 if [ ${#COUNT} -gt 0 ]; then
   echo ${#COUNT}
